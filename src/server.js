@@ -11,8 +11,20 @@ console.log(`Node.js ${process.version}`)
 
 app.use(express.json())
 
-app.get('/', (req, res) => {
-    res.json({ msg: "Rahti2 node 0.2" })
+app.get('/', async (req, res) => {
+    try {
+        const test = await prisma.test.findMany()
+        res.send({ msg: 'mongodb prisma findMany', test: test })
+
+    } catch (err) {
+        
+        console.log(err)
+        res.send({
+            msg: 'ERROR',
+            error: err
+        })
+    }
+
 })
 
 app.get('/prisma', async (req, res) => {

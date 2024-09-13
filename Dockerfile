@@ -7,9 +7,12 @@ WORKDIR /app
 
 # Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
+COPY prisma ./prisma/
 
 # Install the app dependencies
 RUN npm install
+RUN npm install @prisma/client
+#RUN npx prisma generate
 
 # Copy the rest of the application code to the working directory
 COPY . .
@@ -23,4 +26,3 @@ EXPOSE 8080
 
 # Define the command to run the app
 CMD ["sh", "-c", "if [ \"$MODE\" = 'development' ]; then npm run dev; else npm start; fi"]
-
