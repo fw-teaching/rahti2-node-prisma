@@ -18,10 +18,9 @@ RUN npx prisma generate
 COPY . .
 
 # Run as user node (not root)
+RUN chown -R node_modules/.prisma
 RUN chown -R node:node /app
 USER node
-
-
 
 # Expose the port the app runs on
 EXPOSE 8080
