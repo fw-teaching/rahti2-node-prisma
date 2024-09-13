@@ -10,7 +10,7 @@ COPY prisma ./prisma/
 
 # Install the app dependencies
 RUN npm install
-RUN npm install @prisma/client
+RUN npm install -g @prisma/client
 #RUN npx prisma generate
 
 # Copy the rest of the application code to the working directory
