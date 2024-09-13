@@ -5,7 +5,7 @@
   "main": "src/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx prisma generate && node src/server.js",
+    "start": "pwd && npx prisma generate && node src/server.js",
     "dev": "nodemon -L src/server.js"
   },
   "repository": {
