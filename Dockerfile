@@ -16,8 +16,10 @@ RUN npm install -g @prisma/client
 # Copy the rest of the application code to the working directory
 COPY . .
 
+
 # Run as user node (not root)
 RUN chown -R node:node /app
+RUN chmod -R 777 /app/node_modules/.prisma/client
 USER node
 
 # Expose the port the app runs on
