@@ -4,9 +4,9 @@ FROM node:22
 # Create and change to the app directory
 WORKDIR /app
 
-
 # Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
+COPY prisma ./prisma/
 COPY prisma ./prisma/
 
 # Install the app dependencies
@@ -18,6 +18,7 @@ RUN npm install @prisma/client
 COPY . .
 
 # Run as user node (not root)
+RUN chown -R node_modules/.prisma
 RUN chown -R node:node /app
 USER node
 
