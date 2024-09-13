@@ -12,7 +12,7 @@ COPY prisma ./prisma/
 # Install the app dependencies
 RUN npm install
 RUN npm install @prisma/client
-#RUN npx prisma generate
+RUN npx prisma generate
 
 # Copy the rest of the application code to the working directory
 COPY . .
@@ -20,6 +20,8 @@ COPY . .
 # Run as user node (not root)
 RUN chown -R node:node /app
 USER node
+
+
 
 # Expose the port the app runs on
 EXPOSE 8080
