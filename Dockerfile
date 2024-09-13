@@ -4,6 +4,7 @@ FROM node:22
 # Create and change to the app directory
 WORKDIR /app
 
+
 # Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
 
@@ -12,6 +13,10 @@ RUN npm install
 
 # Copy the rest of the application code to the working directory
 COPY . .
+
+# Run as user node (not root)
+RUN chown -R node:node /app
+USER node
 
 # Expose the port the app runs on
 EXPOSE 8080
