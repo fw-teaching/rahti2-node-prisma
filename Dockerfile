@@ -17,7 +17,6 @@ RUN npm install @prisma/client
 COPY . .
 
 # Run as user node (not root)
-RUN chown -R node:node node_modules/.prisma
 RUN chown -R node:node /app
 USER node
 
